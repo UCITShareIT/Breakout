@@ -9,6 +9,8 @@
 
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
+<!-- Add inital sound load here  -->
+
 <script>
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
@@ -69,10 +71,12 @@
                 var b = bricks[c][r];
                 if(b.status == 1) {
                     if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        // Add Sound "brick"
                         dy = -dy;
                         b.status = 0;
                         score++;
                         if(score == brickRowCount*brickColumnCount) {
+                            // Add Sound "win"
                             alert("YOU WIN, CONGRATS!");
                             document.location.reload();
                         }
@@ -138,11 +142,14 @@
         }
         else if(y + dy > canvas.height-ballRadius) {
             if(x > paddleX && x < paddleX + paddleWidth) {
+                // Add Sound "paddle"
                 dy = -dy;
             }
             else {
+                // Add Sound "miss"
                 lives--;
                 if(!lives) {
+                    // Add Sound "lose"
                     alert("GAME OVER");
                     document.location.reload();
                 }
